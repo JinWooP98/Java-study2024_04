@@ -13,7 +13,12 @@ public class Main {
 
 //        System.out.println(month + "월" + day + "일은 " + anni + "입니다.");
 //        System.out.printf("%d월 %d일은 %s입니다.\n", month, day, anni);
-        System.out.printf("%d월 %d일은 %s입니다.", month, day, anni);
+        System.out.printf("%d월 %d일은 %s입니다.\n", month, day, anni);
+
+        int x = 10, y = 20;
+
+        System.out.println(x > 10 && (y / 0 == 10));
+        System.out.println(x > 10 || y < 30); // true
     }
 }
 
