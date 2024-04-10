@@ -23,13 +23,13 @@ public class MethodQuiz {
     }
 
     static int indexOf(String targetIndex) {
-        int indexNum = -1;
+        int targetIndexNum = -1;
         for (int i = 0; i < foods.length; i++) {
             if(targetIndex.equals(foods[i])){
-                indexNum = i;
+                targetIndexNum = i;
             }
         }
-        return indexNum;
+        return targetIndexNum;
     }
 
     static void remove(String targetFood) {
