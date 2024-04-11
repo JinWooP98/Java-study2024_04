@@ -11,59 +11,72 @@ public class MethodQuiz {
         System.out.println(Arrays.toString(foods));
     }
 
-    static void push (String newFood) {
-        String[] temp = new String[foods.length + 1];
-        for (int i = 0; i < foods.length; i++) {
+    // 사이즈를 조절해서 새 배열을 만드는 함수
+    static String[] makeNewArray(int size) {
+        return new String[foods.length + size];
+    }
+
+    //사이즈를 조절하고 기존 데이터를 복사하는 함수
+    static String[] copy(int size) {
+        // 사이즈가 1개 큰 배열 생성
+        String[] temp = makeNewArray(size);
+
+        int loopCount = (size >= 0) ? foods.length : temp.length;
+
+        for (int i = 0; i < loopCount; i++) {
             temp[i] = foods[i];
         }
-        temp[foods.length] = newFood;
+        return temp;
+    }
+
+    //foods 배열에 데이터를 끝에 추가하는 함수
+    static void push(String newFood) {
+        String[] temp = copy(1);
+        // 새 배열의 끝인덱스에 새 데이터 추가
+        temp[temp.length - 1] = newFood;
 
         foods = temp;
         temp = null;
     }
 
-    static int indexOf(String targetIndex) {
-        int targetIndexNum = -1;
+    // foods배열에서 특정 데이터의 인덱스를 반환
+    static int indexOf(String searchFood) {
         for (int i = 0; i < foods.length; i++) {
-            if(targetIndex.equals(foods[i])){
-                targetIndexNum = i;
+            if (searchFood.equals(foods[i])) {
+                return i;
             }
         }
-        return targetIndexNum;
+        return -1;
     }
 
-    static void remove(String targetFood) {
-        int targetIndex = indexOf(targetFood);
-        String[] temp = new String[foods.length - 1];
+    // foods 배열에서 맨 끝데이터를 삭제하는 함수
+    static void pop() {
+        foods = copy(-1);
+    }
+
+
+    static void remove(String deleteTarget) {
+        int targetIndex = indexOf(deleteTarget);
+        if(targetIndex == -1) return;
+
         for (int i = targetIndex; i < foods.length - 1; i++) {
             foods[i] = foods[i + 1];
         }
 
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = foods[i];
-        }
+        pop();
 
-        foods = temp;
-        temp = null;
     }
 
-    static boolean include (String targetFood) {
-        for (int i = 0; i < foods.length; i++) {
-            if (targetFood.equals(foods[i])) {
-                return true;
-            }
-        }
-        return false;
+    static boolean include(String searchTarget) {
+        return indexOf(searchTarget) != -1;
     }
 
-    static void insert (int targetIndex, String newFood) {
-        String [] temp = new String[foods.length + 1];
-        for (int i = 0; i < foods.length; i++) {
-            temp[i] = foods[i];
-        }
+    static void insert(int targetIndex, String newFood) {
+        if(isOutOfBounds(targetIndex)) return;
+        String[] temp = copy(1);
 
-        for (int i = foods.length; i > targetIndex ; i--) {
-            temp[i] = temp[i-1];
+        for (int i = temp.length - 1; i > targetIndex; i--) {
+            temp[i] = temp[i - 1];
         }
 
         temp[targetIndex] = newFood;
@@ -72,8 +85,13 @@ public class MethodQuiz {
         temp = null;
     }
 
-    static void  modify (int targetIndex, String newFood) {
+    static void modify(int targetIndex, String newFood) {
+        if(isOutOfBounds(targetIndex)) return;
         foods[targetIndex] = newFood;
+    }
+
+    static boolean isOutOfBounds(int targetIndex) {
+        return targetIndex < 0 || targetIndex > foods.length - 1;
     }
 
     public static void main(String[] args) {
@@ -105,8 +123,6 @@ public class MethodQuiz {
 
         modify(2, "닭갈비");
         printFoods();
-
-
 
 
     }
