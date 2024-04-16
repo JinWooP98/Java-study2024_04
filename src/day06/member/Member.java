@@ -27,6 +27,7 @@ public class Member {
         this.memberName = memberName;
         this.gender = gender;
         this.age = age;
+
     };
 
 
