@@ -54,7 +54,7 @@ public class MemberView {
         int age = Integer.parseInt(si.input("- 나이: "));
 
         // 입력데이터를 기반으로 한 명의 회원 객체를 생성
-        Member newMember = new Member(email, name, password, gender, age);
+        Member newMember = new Member(name, email, password, gender, age);
 
         // 위임 - 관심사의 분리
         mr.addNewMember(newMember);
@@ -70,7 +70,8 @@ public class MemberView {
         System.out.println("* 3. 전체회원 정보 조회하기");
         System.out.println("* 4. 회원 정보 수정하기");
         if(MemberRepository.members.length != 0) System.out.println("* 5. 회원 정보 삭제하기");
-        System.out.println("* 6. 프로그램 종료");
+        System.out.println("* 6. 회원 정보 복구하기");
+        System.out.println("* 7. 프로그램 종료");
         System.out.println("============================");
 
         String menuNumber = si.input(">> ");
@@ -150,8 +151,26 @@ public class MemberView {
                System.out.println("정보를 삭제하지 않습니다.");
            } else {
                mr.removeMemberByEmail(targetMember);
+               mr.addRemoveMember(targetMember);
                System.out.printf("# %s님의 회원저보가 삭제되었습니다\n", targetMember.memberName);
            }
+        }
+    }
+
+    void restoreMember () {
+        String targetEmail = si.input("# 복구 대상의 이메일: ");
+        Member targetMember = mr.findRemovedMemberByEmail(targetEmail);
+        if(targetMember == null) {
+            System.out.println("# 존재하지 않는 이메일 입니다.");
+        } else {
+            String targetPassword = si.input("# 해당 이메일의 비밀번호를 입력하세요: ");
+            if(!targetPassword.equals(targetMember.password)) {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            } else {
+                mr.addNewMember(targetMember);
+                mr.removeMemberInRestore(targetMember);
+                System.out.println("# 복구 완료!!");
+            }
         }
     }
 

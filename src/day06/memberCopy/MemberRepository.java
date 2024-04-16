@@ -5,7 +5,7 @@ public class MemberRepository {
 
     //필드
    static Member[] members;
-
+   static Member[] restoreList;
     /**
      * 이메일을 통해 회원의 모든 정보(객체)를 가져오는 메서드
      * @param inputEmail - 사용자가 입력한 이메일값
@@ -21,9 +21,19 @@ public class MemberRepository {
         return null;
     }
 
+    public Member findRemovedMemberByEmail(String inputEmail) {
+        for (Member m : restoreList) {
+            if(inputEmail.equals(m.email)) {
+                return m;
+            }
+        }
+        return null;
+    }
+
     // 생성자
     MemberRepository() {
         this.members = new Member[0];
+        this.restoreList = new Member[0];
     }
 
     // 메서드
@@ -45,6 +55,17 @@ public class MemberRepository {
         members = temp;
     }
 
+    void addRemoveMember(Member newMember) {
+
+
+        Member[] temp = new Member[restoreList.length + 1];
+        for (int i = 0; i < restoreList.length; i++) {
+            temp[i] = restoreList[i];
+        }
+        temp[temp.length - 1] = newMember;
+        restoreList = temp;
+    }
+
     void removeMemberByEmail(Member targetMember) {
         int index = findTargetIndex(targetMember);
         if(index == -1) return;
@@ -56,6 +77,19 @@ public class MemberRepository {
             temp[i] = members[i];
         }
         members = temp;
+    }
+
+    void removeMemberInRestore(Member targetMember) {
+        int index = findTargetIndex(targetMember);
+        if(index == -1) return;
+        Member[] temp = new Member[restoreList.length - 1];
+        for (int i = index; i < restoreList.length - 1; i++) {
+            restoreList[i] = restoreList[i+1];
+        }
+        for (int i = 0; i < temp.length ; i++) {
+            temp[i] = restoreList[i];
+        }
+        restoreList = temp;
     }
 
     // 이메일 중복을 확인하는 기능
