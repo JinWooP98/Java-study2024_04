@@ -29,11 +29,11 @@ public class Product {
         return stock;
     }
 
-    public void reduceStock(int num) {
-        if (num > stock) {
+    public void reduceStock(int quantity) {
+        if (quantity > stock || quantity < 0) {
             System.out.println("재고가 부족합니다.");
         } else {
-            stock -= num;
+            stock -= quantity;
         }
     }
 }

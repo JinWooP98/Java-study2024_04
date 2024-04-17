@@ -2,16 +2,16 @@ package day07.practice;
 
 public class BankAccount {
     private String accountHolder;
-    private int balance;
+    private long balance;
     private String  accountNumber;
 
-    public BankAccount (String accountNumber, String accountHolder, int balance) {
+    public BankAccount (String accountNumber, String accountHolder, long balance) {
         this.accountHolder = accountHolder;
         this.accountNumber = accountNumber;
         this.balance = balance;
     }
 
-    public int getBalance() {
+    public long getBalance() {
         return balance;
     }
 

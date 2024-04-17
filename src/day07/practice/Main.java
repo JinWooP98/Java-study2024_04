@@ -14,6 +14,7 @@ public class Main {
         PasswordManager pm = new PasswordManager("oldPassword123");
         boolean isChanged = pm.changePassword("oldPassword123", "newPassword123");
         System.out.println("Password changed: " + isChanged); // true
+        System.out.println("변경된 비밀번호: " + pm.getPassword());
 
         // Student 클래스 테스트
         Student student = new Student();

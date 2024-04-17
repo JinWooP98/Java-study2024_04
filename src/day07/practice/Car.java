@@ -1,5 +1,7 @@
 package day07.practice;
 
+import java.time.LocalDate;
+
 public class Car {
     private String brand;
     private String model;
@@ -14,6 +16,10 @@ public class Car {
     }
 
     public void setYear(int year) {
+        if(year < 1900 || year > LocalDate.now().getYear()) {
+            System.out.println("유효하지 않은 연식입니다.");
+            return;
+        }
         this.year = year;
     }
 
