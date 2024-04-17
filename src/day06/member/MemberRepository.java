@@ -4,12 +4,18 @@ package day06.member;
 public class MemberRepository {
 
     // 필드
+    // const members = [{}, {}, {}]
 //    static Member[] members; // 현재 관리되는 회원 배열
 //    static Member[] restoreList; // 삭제된 회원들이 모일 배열
 
+    // const members = {
+//    mArr :[ {}, {}, {} ],
+//      push : function() {}
+//  }
     MemberList members;
     MemberList restoreList;
-
+    // Member m1 = new Member(); // 1개의 멤버 객체를 생성
+    // Member[] m2 = new Member[]; // 여러개의 멤버 객체를 저장할 배열을 생성
     // 생성자
     MemberRepository() {
 //        this.members = new Member[3];
@@ -86,6 +92,7 @@ public class MemberRepository {
         return members.get(inputEmail);
     }
     public Member findMemberInRestore(String inputEmail) {
+
 //        for (Member m : members) {
 //            if (inputEmail.equals(m.email)) {
 //                return m;
@@ -122,8 +129,10 @@ public class MemberRepository {
 //            temp[i] = members[i];
 //        }
 //        members = temp;
+        // members배열에서 삭제 후 삭제된 member를 리턴받음
+        Member removed = members.remove(index);
+        restoreList.push(removed);
 
-        members.remove(index);
     }
     public void removeRestoreMember(String inputEmail) {
 
@@ -142,6 +151,7 @@ public class MemberRepository {
 //        }
 //        members = temp;
 
-        restoreList.remove(index);
+        Member removed = restoreList.remove(index);
+        members.push(removed);
     }
 }

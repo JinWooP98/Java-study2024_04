@@ -141,14 +141,17 @@ public class MemberView {
 
     }
 
-    public void showRemoveMembers() {
-        String targetEmail = si.input("# 복구 대상의 이메일: ");
-        Member foundMember = mr.findMemberInRestore(targetEmail);
+    // 회원 복구에 관련한 입출력 처리
+    public void restoreMember() {
+        String inputEmail = si.input("# 복구 대상의 이메일: ");
+
+        // 이메일이 일치하는 회원이 복구리스트에 있는지 확인
+        Member foundMember = mr.findMemberInRestore(inputEmail);
         if(foundMember != null) {
+            // 패스워드 검사
             String inputPw = si.input("# 비밀번호를 입력: ");
             if (inputPw.equals(foundMember.password)) {
-                mr.addNewMember(foundMember);
-                mr.removeRestoreMember(targetEmail);
+                mr.removeRestoreMember(inputEmail);
                 System.out.println("# 회원 복구가 처리되었습니다.");
             } else {
                 System.out.println("비밀번호가 틀렸습니다.");
