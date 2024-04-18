@@ -12,6 +12,7 @@ public class MemberList {
 
     Member[] mArr;
 
+    public static final int NOT_FOUND = -1;
     MemberList() {
         this.mArr = new Member[0];
     }
@@ -32,7 +33,7 @@ public class MemberList {
                 return i;
             }
         }
-        return -1;
+        return NOT_FOUND; // 코드의 가독성을 위해 이러한 것들을 상수로 처리해주는 것이 좋음
     }
     // 한 명의 회원 정보 얻기
     Member get(String email) {
