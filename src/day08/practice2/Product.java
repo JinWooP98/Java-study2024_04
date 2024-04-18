@@ -1,6 +1,6 @@
 package day08.practice2;
 
-import static day08.practice2.Store.addSale;
+
 
 public class Product{
 
@@ -13,6 +13,6 @@ public class Product{
     }
 
     void sellProduct () {
-        addSale(this.price);
+        Store.addSale(this.price);
     }
 }

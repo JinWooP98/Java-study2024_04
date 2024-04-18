@@ -13,7 +13,7 @@ public class Department {
     }
 
     void addStudent (int num) {
-        studentCount += num;
+        this.studentCount += num;
         totalStudents += num;
     }
 
