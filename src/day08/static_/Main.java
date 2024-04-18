@@ -44,6 +44,7 @@ public class Main {
 
         m1();
         String name = input("12312");
+        String name1 = input("1234");
 
         out.println("======================");
 

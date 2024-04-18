@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class SimpleInput {
 
     private static Scanner sc;
-
     static {
         sc = new Scanner(System.in);
     }
