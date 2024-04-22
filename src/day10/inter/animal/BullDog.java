@@ -1,7 +1,7 @@
 package day10.inter.animal;
 
 // 인터페이스는 다중 상속을 할 수 있음
-public class BullDog implements Pet, Huntable, Wild{
+public class BullDog implements Pet, Aggressive{
 
     @Override
     public void handle() {

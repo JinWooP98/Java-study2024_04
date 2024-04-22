@@ -1,6 +1,7 @@
 package day10.inter.animal;
 
-public class Rabbit implements Pet, Wild{
+// extends 와 implement 동시 사용 가능, extends가 Animal 앞에 와야 한다.
+public class Rabbit extends Animal implements Pet, Wild{
 
     @Override
     public void handle() {

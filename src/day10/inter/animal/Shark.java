@@ -1,6 +1,6 @@
 package day10.inter.animal;
 
-public class Shark implements Huntable, Wild{
+public class Shark implements Aggressive{
     @Override
     public void hunt(Pet pet) {
 
