@@ -13,5 +13,14 @@ public class Main {
         BananaBasket bb = new BananaBasket();
         bb.setBanana(new Banana(15));
         Banana banana = bb.getBanana();
+
+        Basket<Apple> appleBasket = new Basket<Apple>();
+
+        appleBasket.setFruit(new Apple(1));
+        Apple fruit = appleBasket.getFruit();
+
+        Basket<Banana> bananaBasket = new Basket<Banana>();
+        bananaBasket.setFruit(new Banana(33));
+
     }
 }
