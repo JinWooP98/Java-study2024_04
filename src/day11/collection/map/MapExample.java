@@ -11,7 +11,7 @@ public class MapExample {
     public static void main(String[] args) {
 
         Map<String, Object> map = new HashMap<>();
-
+        System.out.println(map);
         // 데이터 추가 : put()
         map.put("지갑잔액", 500);
         map.put("좋아하는 자동차", new Mustang());
