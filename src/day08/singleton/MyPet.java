@@ -14,6 +14,7 @@ public class MyPet {
     }
 
     // 3. 공개된 메서드를 통해 미리 만들어둔 단 하나의 객체를 제공
+    // 관례적으로 이 이름 사용
     public static MyPet getInstance() {
         return obj;
     }
