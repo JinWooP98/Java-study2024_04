@@ -19,7 +19,7 @@ public class FileOutputExample {
         // try with resource : close 가 필요한 하드웨어 접근 코드에 대해
         // 메모리 자원 반납처리를 자동화해주는 문법
 //        FileOutputStream fos = null;
-        try (FileOutputStream fos = new FileOutputStream(ROOT_PATH + "/hello2/pet.txt")) {
+        try (FileOutputStream fos = new FileOutputStream(ROOT_PATH + "/hello/pet.txt")) {
 //            fos = new FileOutputStream(ROOT_PATH + "/hello2/pet.txt");
             fos.write(message.getBytes());
         } catch (FileNotFoundException e) {

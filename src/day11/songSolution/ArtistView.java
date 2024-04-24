@@ -13,7 +13,7 @@ public class ArtistView {
 
     // 프로그램 실행
     public static void start() {
-
+        repository.load();
         while (true) {
             System.out.println("\n\n****** 음악 관리 프로그램 ******");
             System.out.printf("# 현재 등록된 가수: %d명\n", repository.count());
@@ -80,11 +80,14 @@ public class ArtistView {
             // 새로운 노래를 추가해본다. 추가가 잘되었는지 여부를 확인한다.
             boolean flag = repository.addNewSong(artistName, songName);
             if (flag) { // 기존 가수의 트랙리스트에 노래만 추가하는 경우
-                System.out.printf("\n# %s님이 노래목록에 %s곡이 추가되었습니다.\n");
+                System.out.printf("\n# %s님이 노래목록에 %s곡이 추가되었습니다.\n", artistName, songName);
             } else { // 노래가 중복된 경우
-                System.out.printf("\n# [%s]곡은 이미 등록된 노래입니다.\n");
+                System.out.printf("\n# [%s]곡은 이미 등록된 노래입니다.\n", songName);
             }
         }
+
+        // 등록된 내용 세이브파일에 저장하기
+        repository.save();
 
     }
 }
