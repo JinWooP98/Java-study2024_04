@@ -18,6 +18,8 @@ public class MemberController {
     void run() {
 
         while (true) {
+
+            mv.load();
             String menuNum = mv.showProgramMenu();
 
             switch (menuNum) {

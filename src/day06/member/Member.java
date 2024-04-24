@@ -18,7 +18,7 @@ public class Member {
     // 시스템이 생성하는 데이터: 회원번호, 회원가입일자
     // 사용자가 제공하는 데이터: email, password, gender, memberName, age
 
-    Member( String email, String password,  String memberName, String gender, int age) {
+    public Member( String email, String password,  String memberName, String gender, int age) {
         this.id = 1;
         this.regDate = LocalDate.now(); // 현재 시간을 읽어서 처리
 

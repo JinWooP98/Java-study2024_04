@@ -175,4 +175,8 @@ public class MemberView {
         }
 
     }
+
+    public void load() {
+        mr.loadFile();
+    }
 }
