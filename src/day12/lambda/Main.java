@@ -72,7 +72,29 @@ public class Main {
         System.out.println("========= 짝수만 필터링 =========");
         List<Integer> filter = filter(numbers, n -> n % 2 == 0);
         System.out.println("filter = " + filter);
-    }
 
+        System.out.println("========== 사과의 색상만 추출 =========");
+        List<Color> colors = MappingApple.mppingApplesByColor(appleBasket);
+        System.out.println("colors = " + colors);
+
+        System.out.println("===== 사과의 무게만 추출 =====");
+
+        List<Integer> map1 = MappingApple.map(appleBasket, new GenericFunction<Apple, Integer>() {
+            @Override
+            public Integer apply(Apple apple) {
+                return apple.getWeight();
+            }
+        });
+
+        System.out.println("map1 = " + map1);
+
+
+        List<Color> map2 = MappingApple.map(appleBasket, (apple) -> apple.getColor());
+        System.out.println("map2 = " + map2);
+
+        System.out.println("===== 숫자리스트에서 각 숫자들의 제곱을 추출 =====");
+        List<Integer> pows = MappingApple.map(numbers, n -> n * n);
+        System.out.println("pows = " + pows);
+    }
 }
 
