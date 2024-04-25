@@ -160,22 +160,38 @@ public class Main {
                 {Trader: Raoul in Cambridge, year: 2022, value: 1000}
                 {Trader: Alan in Cambridge, year: 2022, value: 950}
          */
+        /*
         Map<Integer, List<Transaction>> groupByYearMap = new HashMap<>();
 
         List<Transaction> liveInCambridege = transactions.stream()
                 .filter(t -> t.getTrader().getCity().equals("Cambridge"))
                 .collect(Collectors.toList());
 
-        System.out.println("Year: 2021");
+        groupByYearMap.put(2021,
         liveInCambridege.stream()
                 .filter(t -> t.getYear() == 2021)
-                .forEach(t -> System.out.println(t.MytoString()));
+                .collect(Collectors.toList()));
 
-        System.out.println("\nYear: 2022");
-        liveInCambridege.stream()
-                .filter(t -> t.getYear() == 2022)
-                .forEach(t -> System.out.println(t.MytoString()));
+        groupByYearMap.put(2022,
+                liveInCambridege.stream()
+                        .filter(t -> t.getYear() == 2022)
+                        .collect(Collectors.toList()));
 
+        for (Integer i : groupByYearMap.keySet()) {
+            System.out.println("year: " + i);
+            for (Transaction t : groupByYearMap.get(i)) {
+                System.out.println(t);
+            }
+        }
+*/
+        Map<Integer, List<Transaction>> cambridgeTrsMap = transactions.stream()
+                .filter(trs -> trs.getTrader().getCity().equals("Cambridge"))
+                .collect(Collectors.groupingBy(trs -> trs.getYear()));
+
+        cambridgeTrsMap.forEach((key, value) -> {
+            System.out.println("key = " + key);
+            value.forEach(System.out::println);
+        });
 
         System.out.println("==========================================================");
 

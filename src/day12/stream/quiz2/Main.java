@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toList;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -33,7 +35,7 @@ public class Main {
         List<Booking> bookingIn2022 = bookings.stream()
                 .filter(b -> b.getYear() == 2022)
                 .sorted(Comparator.comparing(Booking::getPrice))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         System.out.println("bookingIn2022 = " + bookingIn2022);
         System.out.println("==========================================================");
@@ -42,7 +44,7 @@ public class Main {
         List<String> destinationCountries = bookings.stream()
                 .map(b -> b.getDestination().getCountry())
                 .distinct()
-                .collect(Collectors.toList());
+                .collect(toList());
 
         System.out.println("destinationCountries = " + destinationCountries);
         System.out.println("==========================================================");
@@ -51,7 +53,7 @@ public class Main {
         List<Booking> travlerInParis = bookings.stream()
                 .filter(b -> b.getDestination().getCity().equals("Paris"))
                 .sorted(Comparator.comparing(b -> b.getTraveler().getName()))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         System.out.println("travlerInParis = " + travlerInParis);
         System.out.println("==========================================================");
@@ -61,7 +63,8 @@ public class Main {
                 .sorted(Comparator.comparing(b -> b.getTraveler().getEmail()))
                 .map(b -> b.getTraveler().getEmail())
                 .distinct()
-                .collect(Collectors.toList());
+                .sorted()
+                .collect(toList());
 
         System.out.println("travlerEmail = " + travlerEmail);
         System.out.println("==========================================================");
@@ -95,7 +98,7 @@ public class Main {
         List<Booking> minPriceTravelInfo = bookings.stream()
                 .sorted(Comparator.comparing(b -> b.getPrice()))
                 .limit(1)
-                .collect(Collectors.toList());
+                .collect(toList());
 
         System.out.println("minPriceTravelInfo = " + minPriceTravelInfo);
         System.out.println("==========================================================");
@@ -105,7 +108,7 @@ public class Main {
 
         List<Booking> travleInfoUpto2000 = bookings.stream()
                 .filter(b -> b.getPrice() >= 2000)
-                .collect(Collectors.toList());
+                .collect(toList());
 
         System.out.println("travleInfoUpto2000 = " + travleInfoUpto2000);
         System.out.println("==========================================================");
@@ -130,15 +133,15 @@ public class Main {
 
         List<Booking> bookingInParis = bookings.stream()
                 .filter(b -> b.getDestination().getCity().equals("Paris"))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         List<Booking> bookingInRome = bookings.stream()
                 .filter(b -> b.getDestination().getCity().equals("Rome"))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         List<Booking> bookingInBerlin = bookings.stream()
                 .filter(b -> b.getDestination().getCity().equals("Berlin"))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         alltravler.put("Paris", bookingInParis);
         alltravler.put("Rome", bookingInRome);
